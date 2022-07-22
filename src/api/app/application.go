@@ -28,7 +28,13 @@ func initRouter() {
 		UseCase: &getProductsUseCase,
 	}
 
-	Router := config.Routers(getProductsController)
+	createProductUseCase := usecases.CreateProductImp{}
+
+	createProductController := controllers.CreateProduct{
+		UseCase: &createProductUseCase,
+	}
+
+	Router := config.Routers(getProductsController, createProductController)
 
 	serverPort := os.Getenv("PORT")
 	if serverPort == "" {

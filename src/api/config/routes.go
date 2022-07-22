@@ -6,13 +6,14 @@ import (
 	"github.com/go-chi/chi/v5/middleware"
 )
 
-func Routers(gp controllers.GetProducts) *chi.Mux {
+func Routers(gp controllers.GetProducts, cp controllers.CreateProduct) *chi.Mux {
 	router := chi.NewRouter()
 	router.Use(middleware.RealIP)
 	router.Use(middleware.Logger)
 	router.Use(middleware.Recoverer)
 
 	router.Get("/products", gp.Execute)
+	router.Post("/products", cp.Execute)
 
 	return router
 }
