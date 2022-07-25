@@ -23,18 +23,21 @@ func Start() {
 func initRouter() {
 
 	getProductsUseCase := usecases.GetProductsImp{}
-
 	getProductsController := controllers.GetProducts{
 		UseCase: &getProductsUseCase,
 	}
 
 	createProductUseCase := usecases.CreateProductImp{}
-
 	createProductController := controllers.CreateProduct{
 		UseCase: &createProductUseCase,
 	}
 
-	Router := config.Routers(getProductsController, createProductController)
+	getCostumersUseCase := usecases.GetCustomersImp{}
+	getCostumersController := controllers.GetCustomers{
+		UseCase: &getCostumersUseCase,
+	}
+
+	Router := config.Routers(getProductsController, createProductController, getCostumersController)
 
 	serverPort := os.Getenv("PORT")
 	if serverPort == "" {
