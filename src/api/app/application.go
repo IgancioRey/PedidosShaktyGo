@@ -6,8 +6,6 @@ import (
 	"os"
 
 	"github.com/IgancioRey/PedidosShaktyGo/src/api/config"
-	"github.com/IgancioRey/PedidosShaktyGo/src/api/controllers"
-	"github.com/IgancioRey/PedidosShaktyGo/src/api/core/usecases"
 	"github.com/IgancioRey/PedidosShaktyGo/src/api/repository/database"
 	_ "github.com/go-sql-driver/mysql"
 )
@@ -22,22 +20,9 @@ func Start() {
 
 func initRouter() {
 
-	getProductsUseCase := usecases.GetProductsImp{}
-	getProductsController := controllers.GetProducts{
-		UseCase: &getProductsUseCase,
-	}
+	routesDependencies := InitDependencies()
 
-	createProductUseCase := usecases.CreateProductImp{}
-	createProductController := controllers.CreateProduct{
-		UseCase: &createProductUseCase,
-	}
-
-	getCostumersUseCase := usecases.GetCustomersImp{}
-	getCostumersController := controllers.GetCustomers{
-		UseCase: &getCostumersUseCase,
-	}
-
-	Router := config.Routers(getProductsController, createProductController, getCostumersController)
+	Router := config.Routers(routesDependencies)
 
 	serverPort := os.Getenv("PORT")
 	if serverPort == "" {
