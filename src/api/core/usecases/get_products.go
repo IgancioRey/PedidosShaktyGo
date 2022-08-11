@@ -26,7 +26,7 @@ func getProductsList() []entities.Product {
 
 	_, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
-	results, err := database.DbConn.Query(`SELECT *
+	results, err := database.DbConn.Query(`SELECT Id, ProductName, Stock, Price, SellPrice, DATE_FORMAT(Date, '%d-%m-%Y') as Date
 	FROM Products`)
 
 	if err != nil {

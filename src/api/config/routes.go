@@ -12,6 +12,7 @@ func Routers(rd RoutesDependencies) *chi.Mux {
 	router.Use(middleware.Recoverer)
 
 	router.Get("/products", rd.GetProductsController.Execute)
+	router.Get("/products/{id}", rd.GetProductController.Execute)
 	router.Post("/products", rd.CreateProductController.Execute)
 	router.Get("/customers", rd.GetCostumersController.Execute)
 
