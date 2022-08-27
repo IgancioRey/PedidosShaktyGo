@@ -9,7 +9,8 @@ func InitDependencies() config.RoutesDependencies {
 	routesDependencies := config.RoutesDependencies{
 		GetProductsController:   controllers.GetProducts{},
 		CreateProductController: controllers.CreateProduct{},
-		GetCostumersController:  controllers.GetCustomers{},
+		GetCustomersController:  controllers.GetCustomers{},
+		GetCustomerController:   controllers.GetCustomer{},
 	}
 
 	routesDependencies.SetDependencies()

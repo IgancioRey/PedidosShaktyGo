@@ -1,12 +1,12 @@
 package entities
 
 type Product struct {
-	Id          int
-	ProductName string
-	Stock       int
-	Price       float32
-	SellPrice   float32
-	Date        string
+	Id          int     `json:"id"`
+	ProductName string  `json:"product_name"`
+	Stock       int     `json:"stock"`
+	Price       float32 `json:"price"`
+	SellPrice   float32 `json:"sell_price"`
+	Date        string  `json:"date"`
 }
 
 /*
