@@ -11,6 +11,7 @@ type RoutesDependencies struct {
 	CreateProductController controllers.CreateProduct
 	GetCustomersController  controllers.GetCustomers
 	GetCustomerController   controllers.GetCustomer
+	CreateOrderController   controllers.CreateOrder
 }
 
 func (rd *RoutesDependencies) SetDependencies() {
@@ -19,11 +20,13 @@ func (rd *RoutesDependencies) SetDependencies() {
 	createProductUseCase := usecases.CreateProductImp{}
 	getCustomersUseCase := usecases.GetCustomersImp{}
 	getCustomerUseCase := usecases.GetCustomerImp{}
+	createOrderUseCase := usecases.CreateOrderImp{}
 
 	rd.GetProductsController.UseCase = &getProductsUseCase
 	rd.GetProductController.UseCase = &getProductUseCase
 	rd.CreateProductController.UseCase = &createProductUseCase
 	rd.GetCustomersController.UseCase = &getCustomersUseCase
 	rd.GetCustomerController.UseCase = &getCustomerUseCase
+	rd.CreateOrderController.UseCase = &createOrderUseCase
 
 }

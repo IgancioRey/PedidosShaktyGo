@@ -16,6 +16,7 @@ func Routers(rd RoutesDependencies) *chi.Mux {
 	router.Post("/products", rd.CreateProductController.Execute)
 	router.Get("/customers", rd.GetCustomersController.Execute)
 	router.Get("/customers/{id}", rd.GetCustomerController.Execute)
+	router.Post("/orders", rd.CreateOrderController.Execute)
 
 	return router
 }
